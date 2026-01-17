@@ -15,26 +15,32 @@
 <br><br>
 <a href="https://www.youtube.com/@pcmctl" target="_blank">
   <button style="padding:12px 24px;font-size:16px;background:red;color:white;border:none;border-radius:6px;cursor:pointer;">
-    📺 YouTube Kanalım
+    📺 YouTube Kanalımız
   </button>
 </a>
 
 <br><br>
 <a href="https://instagram.com/_pcmctl/" target="_blank">
   <button style="padding:12px 24px;font-size:16px;background:#E1306C;color:white;border:none;border-radius:6px;cursor:pointer;">
-    📸 Instagram Hesabım
+    📸 Instagram Hesabımız
   </button>
 </a>
 
-<br><br><br>
+<br><br>
+<p style="color:pink; font-weight:bold;">
+  🌸 Sunucumuz Akşam 7-9 arası Açılır (: <br>
+  👉 Youtube Hesabıma Abone Olun
+</p>
+
+<br>
 <p style="font-size:14px; opacity:0.8;">
   Tüm hakları saklıdır. Developed by Sevket Ozkan (:
 </p>
 
 <hr style="margin:40px 0;">
 
-<h2>🦖 ZIP ZIP oyunu</h2>
-<p>PcMcTl Geliştirici</p>
+<h2>🦖 Dinozor Oyunu</h2>
+<p>SPACE ile zıpla — Skor 10 olunca mutlu son ❤️</p>
 
 <canvas id="game" width="600" height="150" style="background:white;"></canvas>
 
@@ -43,13 +49,16 @@ const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
 let dino = { x:50, y:110, w:20, h:40, vy:0, jump:false };
+let girl = { x:520, y:110, w:20, h:40 };
 let cactus = { x:600, y:120, w:20, h:30 };
+
 let gravity = 0.8;
 let score = 0;
 let gameOver = false;
+let happyEnd = false;
 
 document.addEventListener("keydown", e => {
-  if(e.code === "Space" && !dino.jump){
+  if(e.code === "Space" && !dino.jump && !happyEnd){
     dino.vy = -12;
     dino.jump = true;
   }
@@ -62,10 +71,11 @@ function resetGame(){
   cactus.x = 600;
   score = 0;
   gameOver = false;
+  happyEnd = false;
 }
 
 function update(){
-  if(gameOver) return;
+  if(gameOver || happyEnd) return;
 
   dino.y += dino.vy;
   dino.vy += gravity;
@@ -79,6 +89,10 @@ function update(){
   if(cactus.x < -20){
     cactus.x = 600;
     score++;
+  }
+
+  if(score >= 10){
+    happyEnd = true;
   }
 
   if(
@@ -97,12 +111,30 @@ function draw(){
   ctx.fillStyle = "black";
   ctx.fillRect(dino.x, dino.y, dino.w, dino.h);
 
-  ctx.fillRect(cactus.x, cactus.y, cactus.w, cactus.h);
+  if(!happyEnd){
+    ctx.fillRect(cactus.x, cactus.y, cactus.w, cactus.h);
+  }
 
   ctx.fillText("Skor: " + score, 10, 20);
 
   if(gameOver){
     ctx.fillText("GAME OVER - Space ile tekrar", 200, 80);
+  }
+
+  if(happyEnd){
+    // Kız arkadaş
+    ctx.fillStyle = "hotpink";
+    ctx.fillRect(girl.x, girl.y, girl.w, girl.h);
+
+    // Sarılma
+    ctx.fillStyle = "red";
+    ctx.fillText("❤️ MUTLU SON ❤️", 240, 40);
+    ctx.fillText("Sunucumuza Gel!", 245, 60);
+
+    // Dino yaklaşsın
+    if(dino.x < girl.x - 10){
+      dino.x += 2;
+    }
   }
 }
 
