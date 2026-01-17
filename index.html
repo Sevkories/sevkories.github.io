@@ -1,87 +1,50 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <title>Benim Web Sitem</title>
+<body style="background:#0b0b0b; color:white; font-family:Arial; text-align:center;">
 
-  <meta name="description" content="Kendi içeriklerimin olduðu kiþisel web sitem.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<h1 style="color:#00ff99;">ðŸŽ® Åževko SMP</h1>
 
-  <style>
-    body {
-      background-color: #0f0f0f;
-      color: #ffffff;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
+<p>Herkese aÃ§Ä±k, adil ve eÄŸlenceli bir Minecraft SMP sunucusu.</p>
 
-    header {
-      background-color: #111;
-      padding: 20px;
-      font-size: 24px;
-      font-weight: bold;
-    }
+<hr style="width:60%;">
 
-    nav {
-      background-color: #1a1a1a;
-      padding: 10px;
-    }
+<h2>ðŸ“Œ Sunucu Bilgileri</h2>
 
-    nav a {
-      color: #00ff99;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+<p><b>Sunucu AdÄ±:</b> Åževko SMP</p>
+<p><b>SÃ¼rÃ¼m:</b> 1.21</p>
+<p><b>IP Adresi:</b></p>
 
-    section {
-      padding: 30px;
-    }
+<div style="background:#111; padding:15px; width:fit-content; margin:auto; border-radius:8px;">
+  <code id="ip">ayrimcilikyoktr.aternos.me</code>
+</div>
 
-    footer {
-      background-color: #111;
-      padding: 15px;
-      font-size: 14px;
-      color: #aaa;
-    }
-  </style>
-</head>
+<br>
 
-<body>
+<button onclick="kopyala()" style="
+  padding:10px 20px;
+  font-size:16px;
+  background:#00ff99;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+">
+IP KOPYALA
+</button>
 
-<header>
-  ?? Benim Web Sitem
-</header>
+<p id="bildirim"></p>
 
-<nav>
-  <a href="#">Ana Sayfa</a>
-  <a href="#hakkimda">Hakkýmda</a>
-  <a href="#iletisim">Ýletiþim</a>
-</nav>
+<hr style="width:60%;">
 
-<section>
-  <h1>Hoþ Geldin!</h1>
-  <p>Bu site tamamen bana ait içeriklerden oluþur.</p>
-  <p>Burada projelerimi, yazýlarýmý ve paylaþýmlarýmý bulabilirsin.</p>
-</section>
+<h3>âœ¨ Ã–zellikler</h3>
+<p>
+Survival SMP â€¢ Lag yok<br>
+Adil oyun â€¢ Aktif yetkili<br>
+Herkese aÃ§Ä±k â€¢ EÄŸlence garanti
+</p>
 
-<section id="hakkimda">
-  <h2>Hakkýmda</h2>
-  <p>Ben bu siteyi kendi içeriklerimi paylaþmak için oluþturdum.</p>
-</section>
-
-<section id="iletisim">
-  <h2>Ýletiþim</h2>
-  <p>E-posta: ornek@mail.com</p>
-</section>
-
-<!-- ?? Google AdSense reklam kodu BURAYA gelecek ?? -->
-
-<footer>
-  © 2026 Tüm Haklarý Saklýdýr
-</footer>
+<script>
+function kopyala() {
+  navigator.clipboard.writeText("ayrimcilikyoktr.aternos.me");
+  document.getElementById("bildirim").innerText = "âœ… IP kopyalandÄ±!";
+}
+</script>
 
 </body>
-</html>
